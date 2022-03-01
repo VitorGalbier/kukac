@@ -23,7 +23,6 @@ export default function AppPalindromo() {
       inicial: number[0],
       final: number[1]
     })
-    console.log(data)
     setPost(data.join(' - '))
   }, [show]);
 

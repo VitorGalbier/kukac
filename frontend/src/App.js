@@ -37,25 +37,6 @@ function App() {
             </Accordion.Body>
           </Accordion.Item>
         </Accordion>
-
-        {/* <div className="d-grid gap-2 justify-content-center" id="divHome">
-            <Button variant="primary" size="lg">
-              Palíndromo!!
-            </Button>
-
-
-            <Button variant="primary" size="lg">
-              Caixa!!
-            </Button>
-
-            <Button variant="primary" size="lg">
-              Meus Veículos!!
-            </Button>
-
-            <Button variant="primary" size="lg">
-              Endereços!!
-            </Button>
-        </div> */}
       </>
     );
   }

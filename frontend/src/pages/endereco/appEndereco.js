@@ -8,7 +8,7 @@ import axios from 'axios';
 const url = 'http://localhost:3001/cep'
 
 export default function AppEndereco() {
-  const [post, setPost] = useState({})
+  const [post, setPost] = useState([])
   const [show, setShow] = useState(false);
   const [cep, setCep] = useState([]);
   const handleClose = () => setShow(false);
@@ -16,17 +16,14 @@ export default function AppEndereco() {
     setShow(true);
     setCep([e.target[0].value, e.target[1].value, e.target[2].value, e.target[3].value, e.target[4].value])
     e.preventDefault()
-    console.log(cep)
   }
 
   useEffect(async () => {
     const { data } = await axios.post(url, {
       str : cep
     })
-    console.log(cep)
     setPost(data)
-    console.log(post)
-  }, show);
+  }, [show]);
 
   return (
     <>
@@ -41,7 +38,7 @@ export default function AppEndereco() {
         <br></br>
         <Form.Control size="lg" type="text" placeholder="Digite o CEP" />
         <br></br>
-        <Button type="submit">Button</Button>
+        <Button type="submit">Consultar</Button>
       </Form>
 
       <Modal
@@ -51,16 +48,27 @@ export default function AppEndereco() {
         keyboard={false}
       >
         <Modal.Header closeButton>
-          <Modal.Title>Modal title</Modal.Title>
+          <Modal.Title>Endereços Completos</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {post.logradouro}
+          {!!post && post?.map(({cep, logradouro, bairro, localidade, uf, ddd}, idx)=> {
+          return(
+          <>
+            <ul key={idx}>
+              <li>{cep}</li>
+              <li>{logradouro}</li>
+              <li>{bairro}</li>
+              <li>{localidade}</li>
+              <li>{uf}</li>
+              <li>{ddd}</li>
+            </ul>
+            <br></br>
+          </>)})}
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
-            Close
+            Fechar
           </Button>
-          <Button variant="primary">Understood</Button>
         </Modal.Footer>
       </Modal>
     </>

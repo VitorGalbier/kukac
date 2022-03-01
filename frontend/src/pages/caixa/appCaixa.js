@@ -14,7 +14,11 @@ export default function AppCaixa() {
   const handleClose = () => setShow(false);
   const handleShow = (e) => {
     setShow(true);
-    setValor([e.target[0].value, e.target[1].value])
+    if(e.target[0].value > e.target[1].value){
+      alert("Dinheiro insuficiente!")
+    }else{
+      setValor([e.target[0].value, e.target[1].value])
+    }
     e.preventDefault()
   }
 
@@ -23,7 +27,6 @@ export default function AppCaixa() {
       valorProduto: valor[0],
       dinheiro: valor[1]
     })
-    console.log(data)
     setPost(data)
   }, [show]);
   return (

@@ -1,4 +1,3 @@
-
 interface Veiculo{
     modelo : string;
     ano_de_fabricacao : number;

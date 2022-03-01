@@ -1,7 +1,5 @@
 function caixaService (valorProduto, dinheiro){
-    if(valorProduto > dinheiro){
-        return "Dinheiro insuficiente"
-    }else{
+
         let valor = dinheiro -valorProduto
         let resto = valor%100
         let notasCem = (valor-resto)/100
@@ -10,7 +8,6 @@ function caixaService (valorProduto, dinheiro){
         let notaUm = resto2
         return "foram " + notasCem + " notas de cem, " +
         notaDez + " notas de dez, " + notaUm + " notas de um."
-    }
 }
 
 module.exports = caixaService
